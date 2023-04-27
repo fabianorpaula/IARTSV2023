@@ -22,19 +22,29 @@ public class Casa : MonoBehaviour
 
     private void Start()
     {
-       
+        CriarFazendeiro(1);
+        CriarFazendeiro(1);
+        CriarFazendeiro(1);
+        CriarFazendeiro(0);
+        CriarFazendeiro(0);
+
+
     }
 
     private void Update()
     {
         if(TotalComida > 250)
         {
-            CriarFazendeiro();
+            CriarFazendeiro(1);
+        }
+        if(TotalMadeira > 200)
+        {
+            CriarCasa();
         }
         Consumo();
     }
 
-    void CriarFazendeiro()
+    void CriarFazendeiro(int escolhetipo)
     {
         //Limite de População
         if ((QtdCasas * 5) > Fazendeiros.Count)
@@ -48,6 +58,7 @@ public class Casa : MonoBehaviour
                 MeuF.GetComponent<Fazendeiro>().Casa = this.gameObject;
                 TotalComida -= 50;
                 Fazendeiros.Add(MeuF);
+                MeuF.GetComponent<Fazendeiro>().DefinirFuncao(escolhetipo);
             }
         }
     }
