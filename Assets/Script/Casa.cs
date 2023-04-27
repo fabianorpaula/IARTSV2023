@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Casa : MonoBehaviour
 {
-    public int TotalMadeira = 0;
+    public int TotalMadeira = 100;
     public int TotalComida = 500;
+    public int QtdCasas = 1;
+
     //Relogio
     private float tempoCarne = 0;
+    private float tempoMadeira = 0;
     
     
     public GameObject MeuFazendeiro;
@@ -33,28 +36,51 @@ public class Casa : MonoBehaviour
 
     void CriarFazendeiro()
     {
-        if(TotalComida > 50)
+        //Limite de População
+        if ((QtdCasas * 5) > Fazendeiros.Count)
         {
-            GameObject MeuF = Instantiate(MeuFazendeiro, transform.position, Quaternion.identity);
-            MeuF.GetComponent<Fazendeiro>().Floresta = Floresta;
-            MeuF.GetComponent<Fazendeiro>().Carne = Carne;
-            MeuF.GetComponent<Fazendeiro>().Casa = this.gameObject;
-            TotalComida -= 50;
-            Fazendeiros.Add(MeuF);
+            //Limite de Comida
+            if (TotalComida > 50)
+            {
+                GameObject MeuF = Instantiate(MeuFazendeiro, transform.position, Quaternion.identity);
+                MeuF.GetComponent<Fazendeiro>().Floresta = Floresta;
+                MeuF.GetComponent<Fazendeiro>().Carne = Carne;
+                MeuF.GetComponent<Fazendeiro>().Casa = this.gameObject;
+                TotalComida -= 50;
+                Fazendeiros.Add(MeuF);
+            }
         }
     }
 
+    void CriarCasa()
+    {
+        if(TotalMadeira > 100)
+        {
+            TotalMadeira = TotalMadeira - 100;
+            QtdCasas++;
+        }
+    }
 
     void Consumo()
     {
         tempoCarne += Time.deltaTime;
-
-
         if(tempoCarne > 5)
         {
             tempoCarne = 0;
             TotalComida = TotalComida - Fazendeiros.Count;
             if(TotalComida < 0)
+            {
+                Debug.Log("Morreu De Fome!!!!");
+                Time.timeScale = 0;
+            }
+        }
+
+        tempoMadeira += Time.deltaTime;
+        if (tempoMadeira > 10)
+        {
+            tempoMadeira = 0;
+            TotalMadeira = TotalMadeira - Fazendeiros.Count;
+            if (TotalMadeira < 0)
             {
                 Debug.Log("Morreu De Fome!!!!");
                 Time.timeScale = 0;
