@@ -22,7 +22,7 @@ public class Fazendeiro : MonoBehaviour
     void Start()
     {
         Agente = GetComponent<NavMeshAgent>();
-        
+        Destino = Casa;
         
     }
 
