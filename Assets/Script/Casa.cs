@@ -5,5 +5,5 @@ using UnityEngine;
 public class Casa : MonoBehaviour
 {
     public int TotalMadeira = 0;
-    
+    public int TotalComida = 0;
 }

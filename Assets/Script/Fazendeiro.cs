@@ -9,12 +9,24 @@ public class Fazendeiro : MonoBehaviour
     public GameObject Destino;
     public GameObject Casa;
     public GameObject Floresta;
+    public GameObject Carne;
 
     public int madeira;
+    public int comida;
+    public int tipo;
     void Start()
     {
         Agente = GetComponent<NavMeshAgent>();
-        Destino = Floresta;
+        tipo = Random.Range(0, 10);
+        if(tipo < 5)
+        {
+            Destino = Floresta;
+        }
+        else
+        {
+            Destino = Carne;
+        }
+        
     }
 
     // Update is called once per frame
@@ -34,11 +46,26 @@ public class Fazendeiro : MonoBehaviour
             madeira = 10;
             Destino = Casa;
 
-        }else if(Destino == Casa)
+        }
+        else if (Destino == Carne)
+        {
+            comida = 10;
+            Destino = Casa;
+        }
+        else if(Destino == Casa)
         {
             Casa.GetComponent<Casa>().TotalMadeira += madeira;
+            Casa.GetComponent<Casa>().TotalComida += comida;
             madeira = 0;
-            Destino = Floresta;
+            comida = 0;
+            if (tipo < 5)
+            {
+                Destino = Floresta;
+            }
+            else
+            {
+                Destino = Carne;
+            }
         }
    
     }
