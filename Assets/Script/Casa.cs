@@ -6,6 +6,10 @@ public class Casa : MonoBehaviour
 {
     public int TotalMadeira = 0;
     public int TotalComida = 500;
+    //Relogio
+    private float tempoCarne = 0;
+    
+    
     public GameObject MeuFazendeiro;
     public List<GameObject> Fazendeiros;
 
@@ -24,6 +28,7 @@ public class Casa : MonoBehaviour
         {
             CriarFazendeiro();
         }
+        Consumo();
     }
 
     void CriarFazendeiro()
@@ -39,5 +44,22 @@ public class Casa : MonoBehaviour
         }
     }
 
+
+    void Consumo()
+    {
+        tempoCarne += Time.deltaTime;
+
+
+        if(tempoCarne > 5)
+        {
+            tempoCarne = 0;
+            TotalComida = TotalComida - Fazendeiros.Count;
+            if(TotalComida < 0)
+            {
+                Debug.Log("Morreu De Fome!!!!");
+                Time.timeScale = 0;
+            }
+        }
+    }
 
 }
