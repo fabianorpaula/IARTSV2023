@@ -10,45 +10,60 @@ public class Fazendeiro : MonoBehaviour
     public GameObject Casa;
     public GameObject Floresta;
     public GameObject Carne;
+    public GameObject Lazer;
 
     public int madeira;
     public int comida;
-    
+    public bool loteria = false;
 
-    public enum S_tipo {Lenhador, Agricultor};
+    public enum S_tipo {Lenhador, Agricultor, Maraja};
     public S_tipo MeuTipo;
 
+    private float tempoLazer = 0;
 
     void Start()
     {
         Agente = GetComponent<NavMeshAgent>();
         Destino = Casa;
-        
     }
 
     public void DefinirFuncao(int meuT)
     {
-        switch (meuT)
+        if (loteria == false)
         {
-            case 0:
-                //Coleta Madeira
-                MeuTipo = S_tipo.Lenhador;
-                break;
-            case 1:
-                //Coleta Comida
-                MeuTipo = S_tipo.Agricultor;
-                break;
+            switch (meuT)
+            {
+                case 0:
+                    //Coleta Madeira
+                    MeuTipo = S_tipo.Lenhador;
+                    break;
+                case 1:
+                    //Coleta Comida
+                    MeuTipo = S_tipo.Agricultor;
+                    break;
+                case 2:
+                    MeuTipo = S_tipo.Maraja;
+                    break;
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Agente.SetDestination(Destino.transform.position);
-        if(Vector3.Distance(transform.position, Destino.transform.position) < 4)
+        if(loteria == true)
         {
-            MudarDestino();
+            AvisarCasa();
         }
+        else
+        {
+            Agente.SetDestination(Destino.transform.position);
+            if (Vector3.Distance(transform.position, Destino.transform.position) < 4)
+            {
+                MudarDestino();
+            }
+        }
+        
     }
 
     void MudarDestino()
@@ -78,7 +93,27 @@ public class Fazendeiro : MonoBehaviour
             {
                 Destino = Carne;
             }
+            if (MeuTipo == S_tipo.Maraja)
+            {
+                Destino = Lazer;
+            }
+        }
+        else if(Destino == Lazer)
+        {
+            //Agora só vive como maraja;
+            loteria = true;
         }
    
+    }
+
+
+    void AvisarCasa()
+    {
+        tempoLazer += Time.deltaTime;
+        if(tempoLazer >= 10)
+        {
+            Casa.GetComponent<Casa>().ReceberAvisoMaraja();
+            tempoLazer = 0;
+        }
     }
 }

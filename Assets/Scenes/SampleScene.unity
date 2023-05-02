@@ -508,8 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552f279e6d4ea8343b86e7e8740daf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalMadeira: 0
+  TotalMadeira: 100
   TotalComida: 500
+  QtdCasas: 1
   MeuFazendeiro: {fileID: 5032343624899667155, guid: 1e3d7b20d40a9f1499f2de5387290909, type: 3}
   Fazendeiros: []
   Floresta: {fileID: 1764497113}
