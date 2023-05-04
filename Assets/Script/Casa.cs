@@ -24,6 +24,10 @@ public class Casa : MonoBehaviour
 
     private void Start()
     {
+
+        AlterarPosicaoFloresta();
+        AlterarPosicaoCarne();
+
         CriarFazendeiro(2);
         CriarFazendeiro(1);
         CriarFazendeiro(1);
@@ -106,5 +110,43 @@ public class Casa : MonoBehaviour
     public void ReceberAvisoMaraja()
     {
         TotalVidaBoa++;
+    }
+
+    void AlterarPosicaoFloresta()
+    {
+        float posX = Random.Range(10, 40);
+        float posZ = Random.Range(10, 40);
+        int sentido = Random.Range(1, 10);
+        if(sentido > 5)
+        {
+            //muda
+            posX = posX * -1;
+        }
+        else
+        {
+            //não muda
+            //posX = posX;
+        }
+
+        Floresta.transform.position = new Vector3(posX, 0, posZ);
+    }
+
+    void AlterarPosicaoCarne()
+    {
+        float posX = Random.Range(10, 40);
+        float posZ = Random.Range(10, 40);
+        int sentido = Random.Range(1, 10);
+        if (sentido > 5)
+        {
+            //muda
+            posZ = posZ * -1;
+        }
+        else
+        {
+            //não muda
+            //posX = posX;
+        }
+
+        Carne.transform.position = new Vector3(posX, 0, posZ);
     }
 }
