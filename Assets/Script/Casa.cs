@@ -9,6 +9,12 @@ public class Casa : MonoBehaviour
     public int QtdCasas = 1;
     public int TotalVidaBoa = 0;
 
+    //tipos
+    public int trabalhadorCarne;
+    public int trabalhadorMadeira;
+    public int trabalhadorVidaboa;
+    
+
     //Relogio
     private float tempoCarne = 0;
     private float tempoMadeira = 0;
@@ -149,4 +155,30 @@ public class Casa : MonoBehaviour
 
         Carne.transform.position = new Vector3(posX, 0, posZ);
     }
+
+
+    //Descobre Quem Faz O que
+    void DescobreTipos()
+    {
+        trabalhadorCarne =0;
+        trabalhadorMadeira=0;
+        trabalhadorVidaboa=0;
+        for(int i=0; i < Fazendeiros.Count; i++)
+        {
+            if(Fazendeiros[i].GetComponent<Fazendeiro>().InformaTipo() == 0)
+            {
+                trabalhadorMadeira++;
+            }
+            if (Fazendeiros[i].GetComponent<Fazendeiro>().InformaTipo() == 1)
+            {
+                trabalhadorCarne++;
+            }
+            if (Fazendeiros[i].GetComponent<Fazendeiro>().InformaTipo() == 2)
+            {
+                trabalhadorVidaboa++;
+            }
+
+        }
+    }
+
 }

@@ -14,11 +14,7 @@ public class Visualizador : MonoBehaviour
     public TMP_Text tempo;
     //Onde Eu pego as informações
     public Casa MinhaCasa;
-
-    void Start()
-    {
-        
-    }
+    public Gerenciador MeuGerenciador;
 
     // Update is called once per frame
     void Update()
@@ -28,6 +24,6 @@ public class Visualizador : MonoBehaviour
         madeira.text = "Madeira: " + MinhaCasa.TotalMadeira;
         lazer.text = "Lazer: " + MinhaCasa.TotalVidaBoa;
         //tipo;
-        //tempo;
+        tempo.text ="Tempo: "+MeuGerenciador.tempo+"seg"; 
     }
 }

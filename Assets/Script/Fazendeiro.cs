@@ -116,4 +116,21 @@ public class Fazendeiro : MonoBehaviour
             tempoLazer = 0;
         }
     }
+
+    public int InformaTipo()
+    {
+        if (MeuTipo == S_tipo.Lenhador)
+        {
+            return 0;
+        }else if (MeuTipo == S_tipo.Agricultor)
+        {
+            return 1;
+        }else if (MeuTipo == S_tipo.Maraja)
+        {
+            return 2;
+        }else
+        {
+            return -1;
+        }
+    }
 }
