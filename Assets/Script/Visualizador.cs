@@ -23,7 +23,7 @@ public class Visualizador : MonoBehaviour
         comida.text = "Comida: " + MinhaCasa.TotalComida;
         madeira.text = "Madeira: " + MinhaCasa.TotalMadeira;
         lazer.text = "Lazer: " + MinhaCasa.TotalVidaBoa;
-        tipo.text = 
+        tipo.text = "M:" + MinhaCasa.trabalhadorMadeira + "//C:" + MinhaCasa.trabalhadorCarne + "//VB: " + MinhaCasa.trabalhadorVidaboa;
         tempo.text ="Tempo: "+MeuGerenciador.tempo+"seg"; 
     }
 }
