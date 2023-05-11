@@ -72,6 +72,7 @@ public class Casa : MonoBehaviour
                 TotalComida -= 50;
                 Fazendeiros.Add(MeuF);
                 MeuF.GetComponent<Fazendeiro>().DefinirFuncao(escolhetipo);
+                DescobreTipos();
             }
         }
     }
