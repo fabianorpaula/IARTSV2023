@@ -25,7 +25,7 @@ public class Visualizador : MonoBehaviour
         madeira.text = "Madeira: " + MinhaCasa.TotalMadeira;
         barraDeouro.text = "Ouro: " + MinhaCasa.TotalbarraDeouro;
         lazer.text = "Lazer: " + MinhaCasa.TotalVidaBoa;
-        tipo.text = "M:" + MinhaCasa.trabalhadorMadeira + "//C:" + MinhaCasa.trabalhadorCarne + "//VB: " + MinhaCasa.trabalhadorVidaboa;
+        tipo.text = "M:" + MinhaCasa.trabalhadorMadeira + "//C:" + MinhaCasa.trabalhadorCarne + "//VB: " + MinhaCasa.trabalhadorVidaboa+ "//MI: "+MinhaCasa.trabralhadorMineiro;
         tempo.text ="Tempo: "+MeuGerenciador.tempo+"seg"; 
     }
 }
