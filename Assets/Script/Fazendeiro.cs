@@ -94,8 +94,10 @@ public class Fazendeiro : MonoBehaviour
         {
             Casa.GetComponent<Casa>().TotalMadeira += madeira;
             Casa.GetComponent<Casa>().TotalComida += comida;
+            Casa.GetComponent<Casa>().TotalbarraDeouro += barraDeouro;
             madeira = 0;
             comida = 0;
+            barraDeouro = 0;
             if (MeuTipo == S_tipo.Lenhador)
             {
                 Destino = Floresta;
@@ -103,6 +105,10 @@ public class Fazendeiro : MonoBehaviour
            if(MeuTipo == S_tipo.Agricultor)
             {
                 Destino = Carne;
+            }
+            if (MeuTipo == S_tipo.Minerador)
+            {
+                Destino = Ouro;
             }
             if (MeuTipo == S_tipo.Maraja)
             {
@@ -139,7 +145,12 @@ public class Fazendeiro : MonoBehaviour
         }else if (MeuTipo == S_tipo.Maraja)
         {
             return 2;
-        }else
+        }
+        else if (MeuTipo == S_tipo.Minerador)
+        {
+            return 3;
+        }
+        else
         {
             return -1;
         }

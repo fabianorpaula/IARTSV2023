@@ -6,6 +6,7 @@ public class Casa : MonoBehaviour
 {
     public int TotalMadeira = 100;
     public int TotalComida = 500;
+    public int TotalbarraDeouro = 0;
     public int QtdCasas = 1;
     public int TotalVidaBoa = 0;
 
@@ -13,7 +14,8 @@ public class Casa : MonoBehaviour
     public int trabalhadorCarne;
     public int trabalhadorMadeira;
     public int trabalhadorVidaboa;
-    
+    public int trabralhadorMineiro;
+
 
     //Relogio
     private float tempoCarne = 0;
@@ -35,7 +37,7 @@ public class Casa : MonoBehaviour
         AlterarPosicaoFloresta();
         AlterarPosicaoCarne();
 
-        CriarFazendeiro(2);
+        CriarFazendeiro(3);
         CriarFazendeiro(1);
         CriarFazendeiro(1);
         CriarFazendeiro(0);
