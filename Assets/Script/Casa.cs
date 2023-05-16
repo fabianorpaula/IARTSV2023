@@ -27,6 +27,7 @@ public class Casa : MonoBehaviour
     public GameObject Floresta;
     public GameObject Carne;
     public GameObject Lazer;
+    public GameObject Ouro;
 
     private void Start()
     {
@@ -68,6 +69,7 @@ public class Casa : MonoBehaviour
                 MeuF.GetComponent<Fazendeiro>().Floresta = Floresta;
                 MeuF.GetComponent<Fazendeiro>().Carne = Carne;
                 MeuF.GetComponent<Fazendeiro>().Lazer = Lazer;
+                MeuF.GetComponent<Fazendeiro>().Ouro = Ouro;
                 MeuF.GetComponent<Fazendeiro>().Casa = this.gameObject;
                 TotalComida -= 50;
                 Fazendeiros.Add(MeuF);

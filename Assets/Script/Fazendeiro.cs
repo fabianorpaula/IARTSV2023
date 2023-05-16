@@ -11,12 +11,14 @@ public class Fazendeiro : MonoBehaviour
     public GameObject Floresta;
     public GameObject Carne;
     public GameObject Lazer;
+    public GameObject Ouro;
 
     public int madeira;
     public int comida;
+    public int barraDeouro;
     public bool loteria = false;
 
-    public enum S_tipo {Lenhador, Agricultor, Maraja};
+    public enum S_tipo {Lenhador, Agricultor, Minerador, Maraja};
     public S_tipo MeuTipo;
 
     private float tempoLazer = 0;
@@ -43,6 +45,9 @@ public class Fazendeiro : MonoBehaviour
                     break;
                 case 2:
                     MeuTipo = S_tipo.Maraja;
+                    break;
+                case 3:
+                    MeuTipo = S_tipo.Minerador;
                     break;
             }
         }
@@ -71,6 +76,12 @@ public class Fazendeiro : MonoBehaviour
         if(Destino == Floresta)
         {
             madeira = 10;
+            Destino = Casa;
+
+        }
+        else if (Destino == Ouro)
+        {
+            barraDeouro = 10;
             Destino = Casa;
 
         }

@@ -1904,8 +1904,8 @@ MonoBehaviour:
   comida: {fileID: 67799739}
   madeira: {fileID: 1610257986}
   lazer: {fileID: 1201786619}
-  tipo: {fileID: 0}
-  tempo: {fileID: 0}
+  tipo: {fileID: 357510183}
+  tempo: {fileID: 206236732}
   MinhaCasa: {fileID: 1222651211}
   MeuGerenciador: {fileID: 2057023422}
 --- !u!114 &706000646
@@ -3029,6 +3029,9 @@ MonoBehaviour:
   TotalComida: 500
   QtdCasas: 1
   TotalVidaBoa: 0
+  trabalhadorCarne: 0
+  trabalhadorMadeira: 0
+  trabalhadorVidaboa: 0
   MeuFazendeiro: {fileID: 5032343624899667155, guid: 1e3d7b20d40a9f1499f2de5387290909, type: 3}
   Fazendeiros: []
   Floresta: {fileID: 1764497113}
