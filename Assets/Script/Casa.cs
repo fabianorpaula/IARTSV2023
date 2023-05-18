@@ -168,6 +168,7 @@ public class Casa : MonoBehaviour
         int custo = (Fazendeiros[0].GetComponent<Fazendeiro>().RetornaNivel() * 250) + 250;
         if(TotalbarraDeouro > custo)
         {
+            TotalbarraDeouro = TotalbarraDeouro - custo;
             for (int i = 0; i < Fazendeiros.Count; i++)
             {
                 Fazendeiros[i].GetComponent<Fazendeiro>().AumentaNivel();

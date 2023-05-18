@@ -3159,7 +3159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalMadeira: 100
   TotalComida: 500
-  TotalbarraDeouro: 0
+  TotalbarraDeouro: 1000
   QtdCasas: 1
   TotalVidaBoa: 0
   trabalhadorCarne: 0
