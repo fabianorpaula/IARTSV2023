@@ -17,6 +17,8 @@ public class Fazendeiro : MonoBehaviour
     public int comida;
     public int barraDeouro;
     public bool loteria = false;
+    private int LimiteCarga = 10;
+    private int nivel = 0;
 
     public enum S_tipo {Lenhador, Agricultor, Minerador, Maraja};
     public S_tipo MeuTipo;
@@ -71,23 +73,32 @@ public class Fazendeiro : MonoBehaviour
         
     }
 
+    public void AumentaNivel()
+    {
+        nivel++;
+    }
+    public int RetornaNivel()
+    {
+        return nivel;
+    }
     void MudarDestino()
     {
+        int carregando = LimiteCarga + (nivel * 2);
         if(Destino == Floresta)
         {
-            madeira = 10;
+            madeira = carregando;
             Destino = Casa;
 
         }
         else if (Destino == Ouro)
         {
-            barraDeouro = 10;
+            barraDeouro = carregando;
             Destino = Casa;
 
         }
         else if (Destino == Carne)
         {
-            comida = 10;
+            comida = carregando;
             Destino = Casa;
         }
         else if(Destino == Casa)

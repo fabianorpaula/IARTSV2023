@@ -57,6 +57,7 @@ public class Casa : MonoBehaviour
             CriarCasa();
         }
         Consumo();
+        AtualizarFazendeiros();
     }
 
     void CriarFazendeiro(int escolhetipo)
@@ -162,13 +163,29 @@ public class Casa : MonoBehaviour
     }
 
 
+    void AtualizarFazendeiros()
+    {
+        int custo = (Fazendeiros[0].GetComponent<Fazendeiro>().RetornaNivel() * 250) + 250;
+        if(TotalbarraDeouro > custo)
+        {
+            for (int i = 0; i < Fazendeiros.Count; i++)
+            {
+                Fazendeiros[i].GetComponent<Fazendeiro>().AumentaNivel();
+                
+            }
+        }
+        
+    }
+
+
     //Descobre Quem Faz O que
     void DescobreTipos()
     {
         trabalhadorCarne =0;
         trabalhadorMadeira=0;
         trabalhadorVidaboa=0;
-        for(int i=0; i < Fazendeiros.Count; i++)
+        trabralhadorMineiro = 0;
+        for (int i=0; i < Fazendeiros.Count; i++)
         {
             if(Fazendeiros[i].GetComponent<Fazendeiro>().InformaTipo() == 0)
             {
@@ -181,6 +198,10 @@ public class Casa : MonoBehaviour
             if (Fazendeiros[i].GetComponent<Fazendeiro>().InformaTipo() == 2)
             {
                 trabalhadorVidaboa++;
+            }
+            if (Fazendeiros[i].GetComponent<Fazendeiro>().InformaTipo() == 3)
+            {
+                trabralhadorMineiro++;
             }
 
         }
