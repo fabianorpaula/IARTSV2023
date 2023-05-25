@@ -73,9 +73,9 @@ public class Fazendeiro : MonoBehaviour
         
     }
 
-    public void AumentaNivel()
+    public void AumentaNivel(int novoNivel)
     {
-        nivel++;
+        nivel = novoNivel;
     }
     public int RetornaNivel()
     {

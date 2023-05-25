@@ -20,6 +20,7 @@ public class Casa : MonoBehaviour
     //Relogio
     private float tempoCarne = 0;
     private float tempoMadeira = 0;
+    private int nivelFazenda = 0;
     
     //Dados Fazendeiros
     public GameObject MeuFazendeiro;
@@ -36,11 +37,15 @@ public class Casa : MonoBehaviour
 
         AlterarPosicaoFloresta();
         AlterarPosicaoCarne();
-
-        CriarFazendeiro(3);
+        //0 - madeira
+        //1 - carne
+        //2 - vag
+        //3 - ouro
+        //Livinha
         CriarFazendeiro(1);
         CriarFazendeiro(1);
         CriarFazendeiro(0);
+        CriarFazendeiro(3);
         CriarFazendeiro(0);
 
 
@@ -48,11 +53,15 @@ public class Casa : MonoBehaviour
 
     private void Update()
     {
-        if(TotalComida > 250)
+        if(TotalComida > Fazendeiros.Count * 10 + 300)
         {
             CriarFazendeiro(1);
+            CriarFazendeiro(1);
+            CriarFazendeiro(1);
+            CriarFazendeiro(0);
+            CriarFazendeiro(2);
         }
-        if(TotalMadeira > 200)
+        if(TotalMadeira > 150)
         {
             CriarCasa();
         }
@@ -165,13 +174,14 @@ public class Casa : MonoBehaviour
 
     void AtualizarFazendeiros()
     {
-        int custo = (Fazendeiros[0].GetComponent<Fazendeiro>().RetornaNivel() * 250) + 250;
+        int custo = (nivelFazenda * 250) + 250;
         if(TotalbarraDeouro > custo)
         {
             TotalbarraDeouro = TotalbarraDeouro - custo;
+            nivelFazenda++;
             for (int i = 0; i < Fazendeiros.Count; i++)
             {
-                Fazendeiros[i].GetComponent<Fazendeiro>().AumentaNivel();
+                Fazendeiros[i].GetComponent<Fazendeiro>().AumentaNivel(nivelFazenda);
                 
             }
         }
